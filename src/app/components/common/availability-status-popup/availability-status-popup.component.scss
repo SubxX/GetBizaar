@@ -1,0 +1,118 @@
+@use "../../../../assets/scss/theme.scss";
+
+.popup-holder {
+  padding: 30px 20px;
+  background: #fff;
+  border-radius: 10px;
+  cursor: initial;
+}
+
+p {
+  font-size: 14px;
+}
+
+.checkmark,
+.checkmark-alert {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: inline-block;
+  stroke-width: 3;
+  stroke: #fff;
+}
+
+.popup-holder.opened .checkmark {
+  animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #69f0ae;
+  transform: scale(2);
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #69f0ae;
+  fill: none;
+}
+
+.popup-holder.opened .checkmark__circle {
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+}
+
+.thumbs-up {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.45, 1);
+}
+
+.popup-holder.opened .thumbs-up {
+  animation: rotate 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.popup-holder.opened .checkmark__check {
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.popup-holder.opened .checkmark-alert {
+  animation: fill-alert 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #dfc800;
+  transform: scale(2);
+}
+
+.checkmark__circle_alert {
+  stroke: #dfc800;
+}
+
+.c-alert {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.45, 1);
+}
+.popup-holder.opened .c-alert {
+  animation: scale 0.3s ease-in-out 0.9s;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 100px #69f0ae;
+  }
+}
+
+@keyframes fill-alert {
+  100% {
+    box-shadow: inset 0px 0px 0px 100px #dfc800;
+  }
+}

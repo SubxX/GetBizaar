@@ -1,0 +1,46 @@
+<section class="bg-main d-flex align-items-center justify-content-center min-h-screen w-100">
+
+  <form class="inner my-container" autocomplete="off">
+
+    <div class="logo">
+      <img src="assets/images/logo.png" width="180" alt="Bizaar-logo" />
+    </div>
+
+    <div class="your-ac bg-main-light">
+      <h4 class="text-center text-base font-weight-600">Bizaar Marketplace</h4>
+      <p class="text-center text-gray">Please Enter the code we just emailed to you</p>
+
+      <div class="otp-ios mt-3">
+
+        <div class="form-field pb-0" *ngFor="let io of otpFields.controls;let i=index;"
+          [class.io-error]="io.dirty && io.errors">
+          <input #otpinputs type="text" maxlength="1" autocomplete="nope" (input)="checkNumbers($event,i)"
+            (keyup)="pressed($event,i);" [formControl]="io" />
+        </div>
+
+      </div>
+
+      <div class="custom-alert mt-4 mx-auto" #otpalert>
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+          color="#000">
+          <path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z">
+          </path>
+          <path fill-rule="evenodd"
+            d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z">
+          </path>
+        </svg>
+        <div class="alert-message">
+          <p>Invalid security code.</p>
+        </div>
+        <div class="alert-action" (click)="otpalert.classList.remove('shown')">&times;</div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end align-items-center">
+      <button class="blue-btn" (click)="submit()">Next</button>
+    </div>
+
+
+  </form>
+
+</section>

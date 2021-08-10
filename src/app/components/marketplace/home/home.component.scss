@@ -1,0 +1,49 @@
+@use "../../../../assets/scss/theme.scss";
+
+.inner {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .two-grid {
+    position: relative;
+    margin: 50px 0;
+    padding: 50px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    .h4 {
+      margin-bottom: 40px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba($color: theme.$gray-lighter, $alpha: 0.2);
+      width: 1px;
+      height: 65%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .two-grid {
+      padding: 40px;
+      grid-gap: 50px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .two-grid {
+      padding: 30px;
+      grid-template-columns: 1fr;
+      .h4 {
+        margin-bottom: 20px;
+      }
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

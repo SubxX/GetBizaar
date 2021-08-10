@@ -1,0 +1,78 @@
+<div class="popup-holder opened">
+  <button class="pp-close-btn" (click)="close()">
+    <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </button>
+
+  <div class="popup-inner">
+    <h3 class="text-center font-weight-600">{{data.desc}}</h3>
+
+    <div class="details-grid">
+
+      <div class="d-flex align-items-center qty-holder">
+        <p class="font-weight-500">Quantity:</p>
+        <div class="select-box" appNumberInput (increment)="incDecQuantity('inc')" (decrement)="incDecQuantity('dec')">
+          <p>{{qty}}</p>
+          <ng-container *ngIf="this.getNumber(data.quantity) > 1">
+            <img src="assets/images/dd-up.svg" class="dd-up" />
+            <img src="assets/images/dd-down.svg" class="dd-down" />
+          </ng-container>
+        </div>
+      </div>
+
+      <div>
+        <p><span class="font-weight-500">Cost: </span>${{data.price}}</p>
+      </div>
+
+      <div>
+        <p class="font-weight-500">Location(city, state, zip):</p>
+        <p>{{data.location ? data.location : 'N/A'}}</p>
+      </div>
+
+      <div>
+        <p class="font-weight-500">Contact email of seller :</p>
+        <p>{{data.email}}</p>
+      </div>
+
+    </div>
+
+    <ng-container *ngIf="data.images.length>0">
+      <p class="font-weight-700 mb-2">Photos:</p>
+
+      <div class="photos-holder">
+
+        <div class="photo-holder pointer" *ngFor="let d of data.images;let i =index"
+          (click)="openLightBox(data.images,i)">
+          <img #pimg [src]="d.image_url" width="114" height="81" class="load-img"
+            (load)="pimg.classList.add('loaded')" />
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="action text-right">
+      <!-- <button class="outline-btn" (click)="showPayment()" *ngIf="!payUsing">{{data.sale_or_rent=='sale' ? 'Purchase' :
+        'Rent'}}</button> -->
+
+      <app-stripe [data]="this.data" [qty]="this.qty" [totalamount]="this.totalAmt"
+        (paymentStatus)="handlePaymentStatus($event)" *ngIf="payUsing=='stripe'"></app-stripe>
+
+      <div *ngIf="payUsing=='paypal'" class="buy-paypal-holder">
+        <div class="total-amt-paypal text-left">
+          <p>Total Amount </p>
+          <p class="font-weight-bold pp-total-amt">${{this.totalAmt}}</p>
+        </div>
+        <app-paypal [data]="this.data" [qty]="this.qty" [totalamount]="this.totalAmt"
+          (paymentStatus)="handlePaymentStatus($event)"></app-paypal>
+      </div>
+
+      <!--<app-braintree [data]="this.data" [qty]="this.qty" [totalamount]="this.totalAmt" (paymentStatus)="handlePaymentStatus($event)"
+       *ngIf="payUsing=='paypal'"></app-braintree> -->
+
+    </div>
+
+  </div>
+
+</div>

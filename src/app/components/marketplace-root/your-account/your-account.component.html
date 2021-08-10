@@ -1,0 +1,82 @@
+<section class="bg-main d-flex align-items-center justify-content-center min-h-screen w-100">
+
+  <div class="inner my-container">
+
+    <div class="logo" routerLink="/marketplace">
+      <img src="assets/images/logo.png" width="180" alt="Bizaar-logo" />
+    </div>
+
+    <form class="your-ac bg-main-light" [formGroup]="userForm">
+
+      <h2 class="text-center text-base font-weight-600">Your Account</h2>
+
+      <div class="upload-photo">
+        <div class="user-img">
+          <img [src]="userPhoto ? userPhoto.src : 'assets/images/demo-pp.png'" width="180" height="170"
+            alt="user-image" />
+          <input type="file" hidden #user (change)="fileSelected($event)" />
+        </div>
+        <button (click)="user.click()">Change Photo</button>
+      </div>
+      <small class="err-text position-static" *ngIf="userPhotoerr">Please select a image</small>
+
+      <div class="three-col-grid">
+
+        <div class="form-field">
+          <label for="fname">First Name:</label>
+          <input id="fname" type="text" placeholder="Enter Your Firstname" formControlName="first_name" />
+        </div>
+
+        <div class="form-field">
+          <label for="lname">Last Name:</label>
+          <input id="lname" type="text" placeholder="Enter Your Lastname" formControlName="last_name" />
+        </div>
+
+      </div>
+
+      <p class="font-weight-400 text-base mb-3 h5">Payment Information:</p>
+
+      <div class="payment-grid">
+
+        <div class="form-field">
+          <label for="paymentmethod">Payment Method:</label>
+          <div class="select-pm position-relative">
+            <mat-select id="paymentmethod" formControlName="payment_method">
+              <mat-option value="paypal">Paypal</mat-option>
+              <mat-option value="stripe">Stripe</mat-option>
+            </mat-select>
+            <svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 13L6.5 20.5L13 13H0Z" />
+              <path d="M0 7.5L6.5 0L13 7.5H0Z" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- <div class="form-field pb-0" [class.io-error]="getError(userForm.controls.payment_credential)">
+          <label for="paymentcred">{{getPaymentLabel()}}</label>
+          <input id="paymentcred" type="text" placeholder="Enter Venmo username" formControlName="payment_credential" />
+          <small class="err-text" *ngIf="getError(userForm.controls.payment_credential)">Field is
+            required</small>
+        </div> -->
+
+        <div class="form-field pb-0" [class.io-error]="getError(userForm.controls.payment_credential)">
+          <label for="paymentcred" #paymentlabel>Paypal E-mail:</label>
+          <input id="paymentcred" type="text" placeholder="Enter Paypal E-mail" formControlName="payment_credential"
+            #paymentio />
+          <small class="err-text" *ngIf="getError(userForm.controls.payment_credential)">Field is
+            required</small>
+        </div>
+
+      </div>
+
+      <!-- <span id='cwppButton'></span> -->
+    </form>
+
+    <div class="d-flex justify-content-end align-items-center">
+      <button class="blue-btn" (click)="updateUserInfo()">Update</button>
+    </div>
+
+  </div>
+
+
+</section>

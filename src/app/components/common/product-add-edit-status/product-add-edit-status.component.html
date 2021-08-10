@@ -1,0 +1,16 @@
+<div class="confirm-popup-holder position-relative text-center">
+
+  <div>
+    <img [src]="data.type=='add' ? 'assets/images/psuccess-add.svg' : 'assets/images/psuccess-edit.svg' "
+    class="img-fluid block mb-4 load-img" width="200" height="165" alt="produt-added"
+    #statusImg (load)="statusImg.classList.add('loaded')" />
+  </div>
+
+  <h5 class="mt-3 mb-4">{{data.title}}</h5>
+  <!-- <p class="my-4">{{data.desc}}</p> -->
+
+  <div class="d-flex justify-content-center align-items-center action-holders">
+    <button class="cancel-btn mr-3" (click)="closePP(false)">Add new</button>
+    <button class="blue-btn" (click)="closePP(true)">Ok</button>
+  </div>
+</div>

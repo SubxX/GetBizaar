@@ -1,0 +1,157 @@
+<section class="bg-main min-h-screen w-100 d-flex justify-content-center align-items-start">
+
+  <div class="inner my-container" [class.otp]="step===2">
+    <div class="logo" (click)="navigateToHome()" [class.pointer]="step==1">
+      <img src="assets/images/logo.png" width="180" alt="Bizaar-logo" />
+    </div>
+
+    <div class="form-root-holder">
+
+      <div class="step step-padding bg-main-light" *ngIf="step===1">
+        <h4 class="text-base text-center mb-5">Sign Up</h4>
+
+        <div class="custom-alert mb-4" #emailalert>
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+            color="#000">
+            <path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z">
+            </path>
+            <path fill-rule="evenodd"
+              d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z">
+            </path>
+          </svg>
+          <div class="alert-message">
+            <p>Another Marketplace already exists with provided email please try a different email.</p>
+          </div>
+          <div class="alert-action" (click)="emailalert.classList.remove('shown')">&times;</div>
+        </div>
+
+        <form class="grid-form" [formGroup]="setUpForm">
+
+          <div class="form-field" [class.io-error]="getError(setUpForm.controls.fname)">
+            <label>First Name:</label>
+            <input type="text" placeholder="Enter Your First Name" formControlName="fname" />
+            <small class="err-text" *ngIf="getError(setUpForm.controls.fname)">Required</small>
+          </div>
+
+          <div class="form-field" [class.io-error]="getError(setUpForm.controls.lname)">
+            <label>Last Name:</label>
+            <input type="text" placeholder="Enter Your Last Name" formControlName="lname" />
+            <small class="err-text" *ngIf="getError(setUpForm.controls.lname)">Required</small>
+          </div>
+
+          <div class="form-field" [class.io-error]="getError(setUpForm.controls.mail)">
+            <label>Email:</label>
+            <input type="text" placeholder="Enter Your Email" formControlName="mail" />
+            <small class="err-text"
+              *ngIf="setUpForm.controls.mail.dirty && setUpForm.controls.mail.errors?.required">Required</small>
+            <small class="err-text"
+              *ngIf="setUpForm.controls.mail.dirty && setUpForm.controls.mail.errors?.pattern">Please
+              provide a valid email</small>
+          </div>
+
+          <div class="form-field"
+            [class.io-error]="setUpForm.controls.mailhandle.dirty && setUpForm.controls.mailhandle.errors">
+            <label>Email handle(Anything after @):</label>
+            <input type="text" placeholder="Enter Your Email Handle" formControlName="mailhandle" readonly
+              class="disio" />
+            <small class="err-text"
+              *ngIf="setUpForm.controls.mailhandle.dirty && setUpForm.controls.mailhandle.errors?.required">Required</small>
+            <small class="err-text"
+              *ngIf="setUpForm.controls.mailhandle.dirty && setUpForm.controls.mailhandle.errors?.pattern">Not a valid
+              email handle</small>
+          </div>
+
+          <div class="form-field two-col" [class.io-error]="getError(setUpForm.controls.companyname)">
+            <label>Company Name:</label>
+            <input type="text" placeholder="Enter Your Company Name" formControlName="companyname" />
+            <small class="err-text" *ngIf="getError(setUpForm.controls.companyname)">Required</small>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="otp-form bg-main-light" *ngIf="step===2">
+        <h4 class="text-center text-base font-weight-600">Bizaar Marketplace</h4>
+        <p class="text-center text-gray">Please Enter the code we just emailed to you</p>
+        <form class="otp-ios mt-3" autocomplete="off">
+          <div class="form-field pb-0" *ngFor="let io of otpFields.controls;let i=index;">
+            <input #otpinputs type="text" maxlength="1" autocomplete="nope" (input)="checkNumbers($event,i)"
+              (keyup)="pressed($event,i);" [formControl]="io" [class.error-io]="io.dirty && io.errors" />
+          </div>
+        </form>
+        <div class="custom-alert" #otpalert>
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+            color="#000">
+            <path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z">
+            </path>
+            <path fill-rule="evenodd"
+              d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z">
+            </path>
+          </svg>
+          <div class="alert-message">
+            <p>Invalid security code.</p>
+          </div>
+          <div class="alert-action" (click)="otpalert.classList.remove('shown')">&times;</div>
+        </div>
+      </div>
+
+      <div class="step step-padding bg-main-light" *ngIf="step===3">
+        <h4 class="text-base text-center mb-5">Sign Up</h4>
+        <form class="grid-form image-picker-holder" [class.picker-err]="coverPhotoErr">
+
+          <div class="pointer picker" [class.two-col]="!coverPhoto" (click)="cover.click();">
+            <svg viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.35 6.04C18.67 2.59 15.64 0 12 0C9.11 0 6.6 1.64 5.35 4.04C2.34 4.36 0 6.91 0 10C0 13.31 2.69 16 6 16H19C21.76 16 24 13.76 24 11C24 8.36 21.95 6.22 19.35 6.04ZM14 9V16H10V9H7L12 4L17 9H14Z"
+                fill="currentcolor" />
+            </svg>
+            <input type="file" hidden #cover (change)="fileSelected($event,'cover')" />
+            <h5 class="mt-3 text-base">{{ !coverPhoto ?'Upload a' : 'Update'}} cover photo</h5>
+            <p class="text-base recomm">( 1920 x 400 ) <small>Recommended</small></p>
+          </div>
+
+          <div class="image-picked" *ngIf="coverPhoto">
+            <img [src]="coverPhoto.src" />
+          </div>
+
+        </form>
+      </div>
+
+      <div class="step step-padding bg-main-light" *ngIf="step===4">
+        <h4 class="text-base text-center mb-5">Sign Up</h4>
+        <form class="grid-form image-picker-holder" [class.picker-err]="companyLogoErr">
+
+          <div class="pointer picker" [class.two-col]="!companyLogo" (click)="company.click();">
+            <svg viewBox="0 0 24 16" fill="none">
+              <path
+                d="M19.35 6.04C18.67 2.59 15.64 0 12 0C9.11 0 6.6 1.64 5.35 4.04C2.34 4.36 0 6.91 0 10C0 13.31 2.69 16 6 16H19C21.76 16 24 13.76 24 11C24 8.36 21.95 6.22 19.35 6.04ZM14 9V16H10V9H7L12 4L17 9H14Z"
+                fill="currentcolor" />
+            </svg>
+            <h5 class="mt-3 text-base">{{!companyLogo ? 'Upload a': 'Update' }} company logo</h5>
+            <p class="text-base recomm">( 130 x 40 ) <small>Recommended</small></p>
+            <input type="file" hidden #company (change)="fileSelected($event,'company')" />
+          </div>
+
+          <div class="image-picked" *ngIf="companyLogo">
+            <img [src]="companyLogo.src" />
+          </div>
+
+        </form>
+      </div>
+
+      <div class="success step-padding text-center bg-main-light" *ngIf="step===5">
+        <h2 class="text-lime">Congratulations!!</h2>
+        <h5 class="text-base mt-3">Employees can now add items to the matketplace!!</h5>
+        <button class="blue-btn mt-5" routerLink="/access-marketplace">Log-in to the marketplace</button>
+      </div>
+
+    </div>
+
+    <div class="form-actions text-white d-flex justify-content-between align-items-center" *ngIf="step<5">
+      <div><button class="outline-btn" *ngIf="step>1 && step!==2" (click)="skip()">Skip</button></div>
+      <div><button class="blue-btn" (click)="next()">Next</button></div>
+    </div>
+
+  </div>
+
+</section>

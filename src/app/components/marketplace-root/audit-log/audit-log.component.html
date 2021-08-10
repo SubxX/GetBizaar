@@ -1,0 +1,175 @@
+<!-- <app-nav-bar [userData]="user"></app-nav-bar> -->
+
+<section class="bg-main min-h-screen w-100">
+  <div class="inner my-container">
+
+    <h1 class="text-white text-center mb-5">Audit Log</h1>
+    <h4 class="text-base text-center">Data Audit Log</h4>
+
+    <div class="table-root">
+
+      <div class="top-section d-flex justify-content-between align-items-center">
+        <!-- <div></div> -->
+        <div class="select-box">
+
+          <mat-select placeholder="Sort" [formControl]="sort">
+            <mat-option value="ASC">Ascending</mat-option>
+            <mat-option value="DESC">Descending</mat-option>
+          </mat-select>
+
+          <svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 13L6.5 20.5L13 13H0Z" />
+            <path d="M0 7.5L6.5 0L13 7.5H0Z" />
+          </svg>
+
+          <div class="close-btn" (click)="sort.setValue('');" *ngIf="this.sort.value">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#000"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </div>
+
+        </div>
+
+        <div class="select-box">
+          <mat-select placeholder="Filtering options" [formControl]="filter">
+            <mat-option value="Account">Account</mat-option>
+            <mat-option value="Product">Product</mat-option>
+          </mat-select>
+
+          <svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 13L6.5 20.5L13 13H0Z" />
+            <path d="M0 7.5L6.5 0L13 7.5H0Z" />
+          </svg>
+
+          <div class="close-btn" (click)="filter.setValue('')" *ngIf="this.filter.value">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" color="#000"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="table-holder">
+
+        <div class="table-header d-inline-block">
+          <div class="table-grid">
+
+            <div>
+              <p>Date(UTC)</p>
+            </div>
+
+            <div>
+              <p>Type</p>
+            </div>
+
+            <div>
+              <p>Name</p>
+            </div>
+
+            <div>
+              <p>Change</p>
+            </div>
+
+            <div>
+              <p>User IP Address</p>
+            </div>
+
+            <div>
+              <p>User</p>
+            </div>
+
+            <!-- <div>
+              <p>User Type</p>
+            </div> -->
+
+            <!-- <div>
+              <p>Changes</p>
+            </div> -->
+
+          </div>
+        </div>
+
+        <p class="text-center p-4" *ngIf="logData && logData.length==0">No Data</p>
+        <div class="table-body d-inline-block" *ngIf="logData && logData.length>0">
+
+          <div *ngFor="let data of logData" class="table-grid">
+
+            <div>
+              <p>{{data.added_at}}</p>
+            </div>
+
+            <div>
+              <p>{{data.type}}</p>
+            </div>
+
+            <div>
+              <p>{{data.name}}</p>
+            </div>
+
+            <div>
+              <p>{{data.event}}</p>
+            </div>
+
+            <div>
+              <p>{{data.ip_address}}</p>
+            </div>
+
+            <div>
+              <p>{{data.user}}</p>
+            </div>
+
+            <!-- <div>
+              <p>{{data.user_type}}</p>
+            </div> -->
+
+            <!-- <div>
+              <p class="text-blue">2</p>
+            </div> -->
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="bottom-section d-flex justify-content-between align-items-center">
+        <p class="font-weight-600">Total Items: {{totalRecord ? totalRecord : 0}}</p>
+
+        <div class="d-flex align-items-center page-size">
+          <p class="font-weight-600">Page Size:</p>
+          <div class="select-box ml-2">
+            <mat-select [formControl]="shownRecords">
+              <mat-option value="10">10</mat-option>
+              <mat-option value="15">15</mat-option>
+              <mat-option value="20">20</mat-option>
+              <mat-option value="25">25</mat-option>
+              <mat-option value="30">30</mat-option>
+            </mat-select>
+
+            <svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 13L6.5 20.5L13 13H0Z" />
+              <path d="M0 7.5L6.5 0L13 7.5H0Z" />
+            </svg>
+          </div>
+
+          <div class="page-number-io ml-2 d-flex justify-content-center align-items-center">
+
+            <svg (click)="changePage('back')" width="35" height="35"  viewBox="0 0 24 24" fill="currentColor" [class.disabled]="page==1">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
+            </svg>
+
+            <input type="text" [(ngModel)]="page" disabled>
+
+            <svg (click)="changePage('next')" width="35" height="35" viewBox="0 0 24 24" fill="currentColor" [class.disabled]="page==totalPages">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path>
+            </svg>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

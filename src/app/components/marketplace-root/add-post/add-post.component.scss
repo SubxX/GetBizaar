@@ -1,0 +1,210 @@
+@use "../../../../assets/scss/theme.scss";
+
+.checkbox-selctor {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #bebebe;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+  svg {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &.active {
+    background: #0075ff;
+    border-color: #0075ff;
+  }
+}
+
+.form-holder {
+  padding-bottom: 60px;
+}
+
+.form-section {
+  background: #fff;
+  padding: 40px 60px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 25px rgb(0 0 0 / 5%);
+  margin-top: -100px;
+  //transform: translateY(-100px);
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 10px;
+    .work-mail,
+    .photos-uploader {
+      grid-column: span 2;
+    }
+    .photos-uploader {
+      // small {
+      //   color: #f84856;
+      // }
+      label {
+        margin-bottom: 10px;
+      }
+      .images-holder {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 15px;
+        .each-img {
+          border-radius: 6px;
+          height: 100px;
+          border: 1px solid rgb(190, 190, 190);
+          background: theme.$light-bg;
+          padding: 0;
+          overflow: hidden;
+          cursor: pointer;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+          }
+          &.select-image {
+            padding: 20px;
+            img {
+              object-fit: contain;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .actions-holder {
+    margin-top: 50px;
+    text-align: right;
+  }
+
+  .select-box {
+    width: 100%;
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    input {
+      border: 1px solid #bebebe;
+      padding-right: 30px;
+    }
+    img {
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+      &.dd-up {
+        top: 30%;
+        transform: translateY(-30%);
+      }
+      &.dd-down {
+        top: 70%;
+        transform: translateY(-70%);
+      }
+    }
+  }
+
+  .check-boxes p {
+    padding: 0 20px;
+  }
+
+  @media (max-width: 1000px) {
+    form {
+      grid-template-columns: 1fr !important;
+      .work-mail,
+      .photos-uploader {
+        grid-column: span 1;
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    form .photos-uploader .images-holder {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 700px) {
+    padding: 40px 30px;
+    form .photos-uploader .images-holder {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .actions-holder {
+      margin-top: 30px;
+      .blue-btn {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    form .photos-uploader .images-holder {
+      grid-template-columns: 1fr;
+      .each-img {
+        height: 150px;
+      }
+    }
+  }
+
+  @media (max-width: 350px) {
+    .check-boxes p {
+      padding: 0 10px;
+    }
+  }
+}
+
+.deletable-image {
+  .delete-img-btn {
+    background: theme.$red;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+
+  @media (hover: hover) {
+    .delete-img-btn {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    &:hover {
+      img {
+        filter: blur(1px);
+      }
+      .delete-img-btn {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  @media (hover: none) {
+    .delete-img-btn {
+      bottom: 10px;
+      right: 10px;
+    }
+  }
+}
+
+input[type="number"] {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

@@ -1,0 +1,40 @@
+<form id="payment-form" #stripeform (submit)="submitStripeForm($event)" [formGroup]="paymentForm">
+
+  <div class="with-state custom-form">
+    <label [class.err-field]="showInputError(paymentForm.controls.name)">
+      <span>Name</span>
+      <input name="name" class="field" placeholder="Enter your name" formControlName="name">
+    </label>
+    <label [class.err-field]="showInputError(paymentForm.controls.email)">
+      <span>Email</span>
+      <input name="email" type="email" class="field" placeholder="Enter your email" formControlName="email">
+    </label>
+    <label [class.err-field]="showInputError(paymentForm.controls.address)">
+      <span>Address</span>
+      <input name="address" class="field" placeholder="Enter your address" formControlName="address">
+    </label>
+    <label class="city" [class.err-field]="showInputError(paymentForm.controls.city)">
+      <span>City</span>
+      <input name="city" class="field" placeholder="Enter your city" formControlName="city">
+    </label>
+    <label class="state" [class.err-field]="showInputError(paymentForm.controls.state)">
+      <span>State</span>
+      <input name="state" class="field" placeholder="Enter your state" formControlName="state">
+    </label>
+    <label class="zip" [class.err-field]="showInputError(paymentForm.controls.postal_code)">
+      <span>ZIP</span>
+      <input name="postal_code" class="field" placeholder="Enter your zip" formControlName="postal_code">
+    </label>
+  </div>
+
+  <div id="card-element" #cardelment></div>
+  <button #submitbtn type="submit" [disabled]="!cardValid || paymentForm.invalid" class="pay_btn">
+    <div class="spinner hidden" id="spinner"></div>
+    <span id="button-text">Pay ${{totalAmt}}</span>
+  </button>
+
+  <!-- <button type="submit" [disabled]="paymentForm.invalid">
+    <div class="spinner hidden" id="spinner"></div>
+    <span id="button-text">{{data.sale_or_rent=='rent' ? 'Rent' : 'Purchase'}} ${{totalAmt}}</span>
+  </button> -->
+</form>

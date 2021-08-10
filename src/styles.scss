@@ -1,0 +1,406 @@
+/* You can add global styles to this file, and also import other style files */
+@use "./assets/scss/theme";
+@use "./assets/scss/font";
+@import "~swiper/swiper-bundle";
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  font-family: "Poppins", sans-serif !important;
+  font-size: 16px;
+}
+
+body {
+  background: theme.$light-bg;
+}
+
+button,
+input {
+  border: none;
+  background: none;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+}
+input {
+  transition: border-color 0.2s ease;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bg-main {
+  background: theme.$primary;
+}
+.bg-main-light {
+  background: theme.$primary-light;
+}
+
+.text-base {
+  color: theme.$light-text;
+}
+.text-lime {
+  color: theme.$lime;
+}
+
+.text-gray {
+  color: theme.$gray;
+}
+
+.text-blue {
+  color: theme.$blue;
+}
+
+.text-purple {
+  color: theme.$io-bg;
+}
+
+button {
+  padding: 10px 35px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  transition: border-color 0.2s ease, background 0.1s ease;
+  &.blue-btn {
+    color: #fff;
+    background: theme.$blue;
+    &:hover {
+      color: theme.$blue;
+      border-color: theme.$blue;
+      background: transparent;
+    }
+  }
+  &.outline-btn {
+    color: theme.$blue;
+    border-color: theme.$blue;
+    &:hover {
+      color: #fff;
+      background: theme.$blue;
+    }
+  }
+  &.delete-btn {
+    color: #fff;
+    background: theme.$red;
+    &:hover {
+      color: theme.$red;
+      background: transparent;
+      border-color: theme.$red;
+    }
+  }
+}
+
+.pay_btn {
+  background: theme.$blue;
+  border: 1px solid theme.$blue;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  border-radius: 0 0 4px 4px;
+  border: 0;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  transition: all 0.2s ease;
+  box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+  width: 100%;
+}
+.pay_btn:hover {
+  filter: contrast(150%);
+}
+.pay_btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.uppersection {
+  z-index: -1;
+  overflow: hidden;
+  position: relative;
+  .bg-img {
+    width: 100%;
+    height: 110%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1;
+    transition: 400ms cubic-bezier(0.235, 0.615, 0.185, 0.995);
+  }
+  .my-container {
+    min-height: 350px;
+    padding-top: 40px;
+  }
+}
+
+.load-img {
+  opacity: 0;
+  transition: 400ms cubic-bezier(0.235, 0.615, 0.185, 0.995);
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.font-weight-400 {
+  font-weight: 400;
+}
+.font-weight-500 {
+  font-weight: 500;
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+.font-weight-700 {
+  font-weight: 700;
+}
+
+.section-title {
+  // padding-top: 150px;
+  // padding-bottom: 180px;
+  // &.inner-page {
+  //   padding-top: 150px;
+  //   padding-bottom: 140px;
+  // }
+  padding: 20px 0;
+}
+
+.mat-select-arrow-wrapper {
+  visibility: hidden;
+}
+.mat-select-trigger {
+  padding: 13px 15px !important;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+.io-error input,
+.io-error .select-box,
+.error-io {
+  border-color: #f84856 !important;
+}
+
+.err-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #f84856;
+  font-size: 10px;
+  @media (min-width: 325px) {
+    font-size: 12px;
+  }
+}
+
+.pp-close-btn {
+  padding: 5px !important;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background: transparent;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease;
+  background: #ededed;
+}
+
+.logo {
+  width: 150px;
+  // height: 50px;
+  margin: auto;
+  img {
+    width: 100%;
+  }
+  @media (min-width: 767px) {
+    width: 180px;
+  }
+}
+
+.custom-alert {
+  justify-content: space-between;
+  align-items: center;
+  background: #fff3cd;
+  border-radius: 5px;
+  padding: 8px 12px;
+  color: #856404;
+  display: none;
+  svg {
+    width: 35px;
+    height: 35px;
+    flex: none;
+    color: inherit;
+  }
+  .alert-message {
+    padding: 0 20px;
+    flex-grow: 1;
+  }
+  .alert-action {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1;
+    flex: none;
+    cursor: pointer;
+  }
+  &.shown {
+    display: flex;
+  }
+  @media (max-width: 500px) {
+    svg {
+      display: none;
+    }
+    .alert-message {
+      padding: 0;
+    }
+    .alert-action {
+      font-size: 25px;
+    }
+  }
+}
+
+.alert-no-products {
+  margin-top: 40px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 5px;
+  background: #fff;
+  div {
+    padding-left: 30px;
+  }
+  @media (max-width: 500px) {
+    flex-direction: column;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    div {
+      padding: 25px 0 0 0;
+    }
+  }
+}
+
+/*End of GLobal Styles*/
+
+.my-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.form-field {
+  padding-bottom: 20px;
+  position: relative;
+  label {
+    color: theme.$gray;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  input {
+    width: 100%;
+    display: block;
+    border: 1px solid rgba($color: theme.$gray, $alpha: 0.3);
+    padding: 15px 12px;
+    color: theme.$gray;
+    border-radius: 5px;
+    background: theme.$io-bg;
+    &::placeholder {
+      color: rgba($color: theme.$gray, $alpha: 0.4);
+    }
+  }
+}
+
+.inner-io {
+  position: relative;
+  padding-bottom: 20px;
+  label,
+  p {
+    color: #59556a;
+    font-weight: 500;
+    margin-bottom: 10px;
+    span {
+      font-size: 12px;
+    }
+  }
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    display: block;
+    border: 1px solid rgb(190, 190, 190);
+    padding: 12px;
+    border-radius: 3px;
+    background: #fff;
+    color: theme.$io-bg;
+    &::placeholder {
+      color: rgba($color: theme.$gray, $alpha: 0.4);
+    }
+  }
+
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.check-boxes {
+    padding-top: 32px;
+  }
+  @media (max-width: 1000px) {
+    &.check-boxes {
+      padding-top: 0px;
+    }
+  }
+}
+
+.cancel-btn {
+  background: #ededed;
+  color: #737579;
+}
+
+.products-holder {
+  padding: 40px 0;
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+
+  &.one-itm {
+    grid-template-columns: 303px;
+  }
+
+  &.two-itm {
+    grid-template-columns: 303px 303px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .products-holder,
+  .products-holder.one-itm,
+  .products-holder.two-itm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 539px) {
+  .products-holder,
+  .products-holder.one-itm,
+  .products-holder.two-itm {
+    grid-template-columns: 1fr;
+  }
+}
+
+[data-braintree-id="number-field-group"] label {
+  width: 100% !important;
+}

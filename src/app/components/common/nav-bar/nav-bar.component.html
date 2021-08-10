@@ -1,0 +1,42 @@
+<nav>
+  <div class="my-container">
+
+    <div class="inner-nav text-white d-flex align-items-center justify-content-between" #innernavelm>
+      <a routerLink="/marketplace" class="nav-logo" area-label="marketplace">
+        <img *ngIf="user" [src]="user.marketplace_logo ? user.marketplace_logo :'assets/images/logo.png'" width="130"
+          height="40" class="load-img" #navImg (load)="navImg.classList.add('loaded')" alt="marketplace-logo"
+          (error)="navImg.setAttribute('src','assets/images/logo.png')" />
+      </a>
+
+      <div class="position-relative">
+        <svg (click)="navOpened=true" class="pointer" width="30" height="30" viewBox="0 0 16 16" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+
+        <div class="options text-right font-weight-600" [class.shown]="navOpened">
+          <ul>
+            <li routerLink="/marketplace/your-posts" routerLinkActive="active-route" (click)="navOpened=false">Your
+              posts</li>
+            <li routerLink="/marketplace/your-purchases" routerLinkActive="active-route" (click)="navOpened=false">Your
+              purchases</li>
+            <li routerLink="/marketplace/your-sales" routerLinkActive="active-route" (click)="navOpened=false">Your
+              sales</li>
+            <li routerLink="/marketplace/your-account" routerLinkActive="router-link-active" (click)="navOpened=false">
+              Your Account</li>
+            <li routerLink="/marketplace/audit-log" routerLinkActive="router-link-active" (click)="navOpened=false">
+              Audit Log</li>
+            <li (click)="logout()">Logout</li>
+          </ul>
+        </div>
+
+        <!--routerLink="/marketplace/your-sales" routerLinkActive="active-route" (click)="navOpened=false"-->
+
+        <div class="overlay" (click)="navOpened = false" [class.d-block]="navOpened"></div>
+      </div>
+
+    </div>
+
+  </div>
+</nav>

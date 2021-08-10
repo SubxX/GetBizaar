@@ -1,0 +1,44 @@
+@use "../../../../assets/scss/theme.scss";
+
+.ex-pad {
+  padding-right: 48px;
+}
+
+.inner {
+  max-width: 680px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .find-mp {
+    position: relative;
+    margin: 50px 0;
+    padding: 60px 50px 40px 50px;
+    border-radius: 10px;
+    .form-field {
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  @media (max-width: 539px) {
+    .find-mp {
+      padding: 30px 30px 10px 30px;
+    }
+  }
+}
+
+.check {
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 12px;
+  color: theme.$lime;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background: rgba($color: theme.$lime, $alpha: 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

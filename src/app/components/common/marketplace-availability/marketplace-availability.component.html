@@ -1,0 +1,14 @@
+<div class="marketplace-checker text-center">
+  <p class="text-white h4">Unsure if your org already has a marketplace?</p>
+  <label for="marketplace-availability-checker" class="text-gray mt-1">
+    (Check right here by entering your company email)
+  </label>
+  <form (submit)="checkAvailibility($event)" autocomplete="off">
+    <div class="form-field">
+      <input id="marketplace-availability-checker" type="text" placeholder="Enter your company email"
+        [formControl]="email" [class]="available" (input)="available='';" />
+      <small class="err-text" *ngIf="email.dirty && email.errors">Please Enter a valid email</small>
+    </div>
+    <button type="submit" class="blue-btn">Check Now</button>
+  </form>
+</div>

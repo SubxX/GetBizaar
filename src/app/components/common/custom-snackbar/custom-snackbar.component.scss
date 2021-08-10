@@ -1,0 +1,57 @@
+.custom-snackbar{
+  width: 90%;
+  max-width: 500px;
+  border-radius: 5px;
+  background:#fff;
+  box-shadow: 0px 4px 25px rgb(0 0 0 / 20%);
+  padding:8px;
+  color:#212529;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 9999999;
+  svg.success{
+    color:#0aee3e;
+  }
+  svg.warning{
+    color:#c3960e;
+  }
+  button{
+    // padding:5px 20px;
+    padding:5px;
+    color:#737579;
+    &:hover{
+      background: #ededed;
+    }
+    .cls{
+      display: none;
+    }
+
+    .crs{
+      font-size: 25px;
+      line-height: 1;
+    }
+  }
+  svg,button{
+    flex:none
+  }
+  .message{
+    flex-grow: 1;
+    padding:0 10px;
+    font-size: 15px;
+  }
+  @media(min-width:500px){
+    button{
+      padding:5px 20px;
+      .cls{
+        display: block;
+      }
+      .crs{
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@use "../../../../assets/scss/theme.scss";
+
+.confirm-popup-holder {
+  background: #fff;
+  border-radius: 5px;
+  cursor: initial;
+  // height: 95vh;
+  max-height: 95vh;
+  overflow: hidden;
+}
+
+.slider-holder {
+  display: grid;
+  place-items: center;
+  // background:rgba(51, 51, 51, 0.274);
+  background: #fff;
+  .swiper-container {
+    height: 500px;
+    max-height: 95vh;
+    width: 100%;
+  }
+}
+
+.action-holders {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding: 30px;
+  button {
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background: #ededed;
+    color: #737579;
+    transition: opacity 0.3s ease;
+    &.close-btn {
+      transform: scale(1.2);
+      margin: 0 25px;
+    }
+    &.prev.swiper-button-disabled,
+    &.next.swiper-button-disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}

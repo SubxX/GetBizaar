@@ -1,0 +1,91 @@
+<div class="popup-holder position-relative opened">
+
+  <!-- <div class="popup-inner text-center" *ngIf="data.type === 'available'">
+    <button class="pp-close-btn" (click)="dialog.close()">
+      <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    <svg class="checkmark" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" stroke-width="3" />
+      <path class="thumbs-up"
+        d="M12 37H15C15.825 37 16.5 36.325 16.5 35.5V22C16.5 21.175 15.825 20.5 15 20.5H12V37ZM41.745 26.32C41.91 25.945 42 25.54 42 25.12V23.5C42 21.85 40.65 20.5 39 20.5H30.75L32.13 13.525C32.205 13.195 32.16 12.835 32.01 12.535C31.665 11.86 31.23 11.245 30.69 10.705L30 10L20.385 19.615C19.815 20.185 19.5 20.95 19.5 21.745V33.505C19.5 35.425 21.075 37 23.01 37H35.175C36.225 37 37.215 36.445 37.755 35.545L41.745 26.32Z"
+        fill="white" />
+    </svg>
+    <h5 class="mt-4 mb-1">Marketplace Found</h5>
+    <p>
+      Marketplace found with <strong>"@{{ mailHandle }}"</strong>
+    </p>
+  </div> -->
+
+  <div class="popup-inner text-center" *ngIf="data.type === 'not-available'">
+    <button class="pp-close-btn" (click)="dialog.close()">
+      <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+
+    <svg class="checkmark checkmark-alert" width="52" height="52" viewBox="0 0 52 52" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <circle class="checkmark__circle checkmark__circle_alert" cx="26" cy="26" r="23.5" troke-width="3" />
+      <path class="c-alert"
+        d="M26 11C17.72 11 11 17.72 11 26C11 34.28 17.72 41 26 41C34.28 41 41 34.28 41 26C41 17.72 34.28 11 26 11ZM27.5 33.5H24.5V24.5H27.5V33.5ZM27.5 21.5H24.5V18.5H27.5V21.5Z"
+        fill="#fff" />
+    </svg>
+
+    <h5 class="mt-4 mb-1">Marketplace Not Found</h5>
+    <p>No Marketplace found with <strong>"@{{ mailHandle }}"</strong></p>
+    <button class="blue-btn mt-4 w-100" (click)="createMarketPlace()">Create Marketplace</button>
+  </div>
+
+  <div class="popup-inner text-center" *ngIf="data.type === 'user-inactive'">
+
+    <button class="pp-close-btn" (click)="dialog.close()">
+      <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+
+    <svg class="checkmark checkmark-alert" width="52" height="52" viewBox="0 0 52 52" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <circle class="checkmark__circle checkmark__circle_alert" cx="26" cy="26" r="23.5" troke-width="3" />
+      <path class="c-alert"
+        d="M26 11C17.72 11 11 17.72 11 26C11 34.28 17.72 41 26 41C34.28 41 41 34.28 41 26C41 17.72 34.28 11 26 11ZM27.5 33.5H24.5V24.5H27.5V33.5ZM27.5 21.5H24.5V18.5H27.5V21.5Z"
+        fill="#fff" />
+    </svg>
+
+    <h5 class="mt-4 mb-1">User Inactive</h5>
+    <p>Your account is inactive, please contact with admin</p>
+  </div>
+
+  <div class="popup-inner text-center" *ngIf="data.type === 'mp-inactive'">
+
+    <button class="pp-close-btn" (click)="dialog.close()">
+      <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+
+    <svg class="checkmark checkmark-alert" width="52" height="52" viewBox="0 0 52 52" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <circle class="checkmark__circle checkmark__circle_alert" cx="26" cy="26" r="23.5" troke-width="3" />
+      <path class="c-alert"
+        d="M26 11C17.72 11 11 17.72 11 26C11 34.28 17.72 41 26 41C34.28 41 41 34.28 41 26C41 17.72 34.28 11 26 11ZM27.5 33.5H24.5V24.5H27.5V33.5ZM27.5 21.5H24.5V18.5H27.5V21.5Z"
+        fill="#fff" />
+    </svg>
+
+    <h5 class="mt-4 mb-1">Marketplace Inactive</h5>
+    <p>Your marketplace is inactive, please contact with admin</p>
+  </div>
+
+
+
+</div>

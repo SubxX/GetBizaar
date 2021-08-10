@@ -1,0 +1,38 @@
+@use "../../../../assets/scss/theme.scss";
+.marketplace-checker form {
+  width: 100%;
+  max-width: 350px;
+  margin: 30px auto 0 auto;
+  .form-field {
+    margin-bottom: 10px;
+  }
+  input {
+    text-align: center;
+    &::placeholder {
+      text-align: inherit;
+    }
+    &.av {
+      border-color: theme.$lime;
+    }
+    &.na {
+      border-color: theme.$red;
+    }
+  }
+  .err-text {
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @media (max-width: 500px) {
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.alert a {
+  line-height: 1;
+  font-size: 25px;
+  padding-left: 10px;
+  cursor: pointer;
+}
