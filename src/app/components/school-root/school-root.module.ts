@@ -1,0 +1,36 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { SchoolRootRoutingModule } from './school-root-routing.module';
+
+import { SchoolRootComponent } from './school-root.component';
+
+import { AddPostComponent } from './add-post/add-post.component';
+import { NewspaperComponent } from './newspaper/newspaper.component';
+import { YourAccountComponent } from './your-account/your-account.component';
+import { YourPostsComponent } from './your-posts/your-posts.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+
+// Shared Module
+import { SharedModule } from '../common/shared.module';
+
+@NgModule({
+  declarations: [
+    SchoolRootComponent,
+    AddPostComponent,
+    NewspaperComponent,
+    YourAccountComponent,
+    YourPostsComponent
+  ],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    SchoolRootRoutingModule,
+    MatSelectModule,
+    SharedModule
+  ]
+})
+export class SchoolRootModule { }

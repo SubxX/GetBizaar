@@ -1,0 +1,58 @@
+<section class="bg-main d-flex align-items-center justify-content-center min-h-screen w-100">
+
+  <div class="inner my-container">
+
+    <a class="logo" routerLink="/school">
+      <img src="assets/images/logo.png" width="250" height="35" alt="Student News logo" class="img-fluid" />
+    </a>
+
+
+    <form class="your-ac bg-main-light" [formGroup]="userForm">
+
+      <h2 class="text-center text-base font-weight-600">Your Account</h2>
+
+      <div class="upload-photo">
+        <div class="user-img">
+          <img [src]="userPhoto ? userPhoto.src : 'assets/images/demo-pp.png'" width="180" height="170"
+            alt="user-image" />
+          <input type="file" hidden #user (change)="fileSelected($event)" />
+        </div>
+        <button (click)="user.click()">Change Photo</button>
+      </div>
+
+      <small class="err-text position-static" *ngIf="userPhotoerr">Please select a image</small>
+
+      <div class="two-col-grid">
+
+        <div class="form-field" [class.io-error]="getError(userForm.controls.first_name)">
+          <label for="fname">First Name:</label>
+          <input id="fname" type="text" placeholder="Enter Your Firstname" formControlName="first_name" />
+          <small class="err-text" *ngIf="getError(userForm.controls.first_name)">Field is required</small>
+        </div>
+
+        <div class="form-field" [class.io-error]="getError(userForm.controls.last_name)">
+          <label for="lname">Last Name:</label>
+          <input id="lname" type="text" placeholder="Enter Your Lastname" formControlName="last_name" />
+          <small class="err-text" *ngIf="getError(userForm.controls.last_name)">Field is required</small>
+        </div>
+
+      </div>
+
+
+      <div class="form-field" [class.io-error]="getError(userForm.controls.bio)">
+        <label for="paymentcred">Bio:</label>
+        <input id="paymentcred" type="text" placeholder="Enter Bio" formControlName="bio" />
+        <small class="err-text" *ngIf="getError(userForm.controls.bio)">Field is required</small>
+      </div>
+
+
+    </form>
+
+    <div class="d-flex justify-content-end align-items-center">
+      <button class="blue-btn" (click)="updateUserInfo()">Update</button>
+    </div>
+
+  </div>
+
+
+</section>

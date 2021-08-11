@@ -1,0 +1,33 @@
+<section class="bg-main d-flex align-items-center justify-content-center min-h-screen w-100">
+  <div class="inner my-container">
+
+    <a class="logo" routerLink="/">
+      <img src="assets/images/logo.png" width="250" height="35" alt="Student News logo" class="img-fluid" />
+    </a>
+
+    <div class="text-center find-mp bg-main-light">
+      <h4 class="text-base font-weight-600">Student Newspaper</h4>
+
+      <form (ngSubmit)="$event.preventDefault();checkUser()" autocomplete="off">
+        <div class="form-field mt-4" [class.io-error]="userMail.dirty && userMail.errors">
+          <label for="usercheck">Access your school's newspaper</label>
+          <div class="position-relative">
+            <input type="text" id="usercheck" placeholder="Enter Your email" [formControl]="userMail"
+              [class.ex-pad]="userMail.valid" />
+            <button class="check" type="submit" aria-label="check-user-button" *ngIf="userMail.valid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M8.72 18.78a.75.75 0 001.06 0l6.25-6.25a.75.75 0 000-1.06L9.78 5.22a.75.75 0 00-1.06 1.06L14.44 12l-5.72 5.72a.75.75 0 000 1.06z">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <small class="err-text" *ngIf="userMail.dirty && userMail.errors">Please provide a valid email</small>
+        </div>
+      </form>
+
+    </div>
+
+    <app-marketplace-availability></app-marketplace-availability>
+  </div>
+</section>

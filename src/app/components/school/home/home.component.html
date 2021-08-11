@@ -1,0 +1,27 @@
+<section class="bg-main d-flex align-items-center justify-content-center min-h-screen w-100">
+
+  <div class="inner my-container">
+
+    <div class="logo">
+      <img src="assets/images/logo.png" width="250" height="35" alt="Student News logo" class="img-fluid" />
+    </div>
+
+    <div class="text-center two-grid bg-main-light">
+
+      <div class="lt-side">
+        <p class="text-base h4">Set up your school's newspaper</p>
+        <button class="blue-btn" routerLink="/setup-school-newspaper">Begin</button>
+      </div>
+
+      <div class="rt-side">
+        <p class="text-base h4">Access your school's newspaper</p>
+        <button class="blue-btn" (click)="goToMarketPlace()">Go to school's newspaper</button>
+      </div>
+
+    </div>
+
+    <app-marketplace-availability></app-marketplace-availability>
+
+  </div>
+
+</section>

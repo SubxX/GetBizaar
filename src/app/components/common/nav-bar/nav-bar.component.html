@@ -2,10 +2,12 @@
   <div class="my-container">
 
     <div class="inner-nav text-white d-flex align-items-center justify-content-between" #innernavelm>
-      <a routerLink="/marketplace" class="nav-logo" area-label="marketplace">
-        <img *ngIf="user" [src]="user.marketplace_logo ? user.marketplace_logo :'assets/images/logo.png'" width="130"
+      <a routerLink="/school" class="nav-logo" area-label="School Newspaper">
+        <!-- <img *ngIf="user" [src]="user.marketplace_logo ? user.marketplace_logo :'assets/images/logo.png'" width="130"
           height="40" class="load-img" #navImg (load)="navImg.classList.add('loaded')" alt="marketplace-logo"
-          (error)="navImg.setAttribute('src','assets/images/logo.png')" />
+          (error)="navImg.setAttribute('src','assets/images/logo.png')" /> -->
+        <img src="assets/images/logo.png" width="130" height="40" class="load-img" #navImg
+          (load)="navImg.classList.add('loaded')" alt="School Newspaper Logo" />
       </a>
 
       <div class="position-relative">
@@ -17,16 +19,19 @@
 
         <div class="options text-right font-weight-600" [class.shown]="navOpened">
           <ul>
-            <li routerLink="/marketplace/your-posts" routerLinkActive="active-route" (click)="navOpened=false">Your
-              posts</li>
-            <li routerLink="/marketplace/your-purchases" routerLinkActive="active-route" (click)="navOpened=false">Your
-              purchases</li>
-            <li routerLink="/marketplace/your-sales" routerLinkActive="active-route" (click)="navOpened=false">Your
-              sales</li>
-            <li routerLink="/marketplace/your-account" routerLinkActive="router-link-active" (click)="navOpened=false">
-              Your Account</li>
-            <li routerLink="/marketplace/audit-log" routerLinkActive="router-link-active" (click)="navOpened=false">
-              Audit Log</li>
+            <li routerLink="/school/create-article" routerLinkActive="active-route" (click)="navOpened=false">
+              Create a New Article
+            </li>
+            <li routerLink="/school/my-articles" routerLinkActive="active-route" (click)="navOpened=false">
+              My Articles
+            </li>
+            <li routerLink="/school/my-profille" routerLinkActive="router-link-active" (click)="navOpened=false">
+              My Profile
+            </li>
+            <li (click)="navOpened=false">Sports</li>
+            <li (click)="navOpened=false">World News</li>
+            <li (click)="navOpened=false">Politics</li>
+            <li (click)="navOpened=false">Fantasy</li>
             <li (click)="logout()">Logout</li>
           </ul>
         </div>

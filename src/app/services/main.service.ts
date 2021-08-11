@@ -87,7 +87,7 @@ export class MainService {
   // SEO RELATED STUFF
 
   updateTitle(tt?: string): void {
-    this.title.setTitle(tt ? `Bizaar | ${tt}` : 'Bizaar');
+    this.title.setTitle(tt ? `Student News | ${tt}` : 'Student News');
   }
 
 }

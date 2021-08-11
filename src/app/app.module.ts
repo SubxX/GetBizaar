@@ -2,83 +2,45 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, Location, LocationStrategy, PathLocationStrategy } from "@angular/common";
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
-import { SetUpMarketplaceComponent } from './components/marketplace/set-up-marketplace/set-up-marketplace.component';
-import { HomeComponent } from './components/marketplace/home/home.component';
-import { AddPostComponent } from './components/marketplace-root/add-post/add-post.component';
-import { NavBarComponent } from './components/common/nav-bar/nav-bar.component';
-import { YourSalesRentalComponent } from './components/marketplace-root/your-sales-rental/your-sales-rental.component';
-import { YourPurchasesComponent } from './components/marketplace-root/your-purchases/your-purchases.component';
-import { YourPostsComponent } from './components/marketplace-root/your-posts/your-posts.component';
-import { AuditLogComponent } from './components/marketplace-root/audit-log/audit-log.component';
-import { MarketplaceComponent } from './components/marketplace-root/marketplace/marketplace.component';
-import { ProductComponent } from './components/common/product/product.component';
-import { ProductDetailsComponent } from './components/common/product-details/product-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+
+// Material Inputs
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import { AccessMarketPlaceComponent } from './components/marketplace/access-market-place/access-market-place.component';
-import { MarketplaceAvailabilityComponent } from './components/common/marketplace-availability/marketplace-availability.component';
-import { YourAccountComponent } from './components/marketplace-root/your-account/your-account.component';
-import { ConnectPaymentMethodComponent } from './components/marketplace/connect-payment-method/connect-payment-method.component';
-import { ConfirmationPopupComponent } from './components/common/confirmation-popup/confirmation-popup.component';
-import { SecurityComponent } from './components/marketplace/security/security.component';
-import { LoaderComponent } from './components/common/loader/loader.component';
-import {StripeComponent} from './components/payment/stripe/stripe.component';
-import {BraintreeComponent} from './components/payment/braintree/braintree.component'
-import {PaypalComponent} from './components/payment/paypal/paypal.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { AvailabilityStatusPopupComponent } from './components/common/availability-status-popup/availability-status-popup.component';
-import {ProductAddEditStatusComponent} from './components/common/product-add-edit-status/product-add-edit-status.component';
+// Custom Directives
+import { NumberInputDirective } from './directives/number-input/number-input.directive';
+import { LazyLoadImageDirective } from './directives/lazy-load-image/lazy-load-image.directive';
 
-import {NumberInputDirective} from './directives/number-input/number-input.directive';
-import {LazyLoadImageDirective} from './directives/lazy-load-image/lazy-load-image.directive';
+// Shared Components
+import { AppComponent } from './app.component';
+import { HomeComponent } from './components/school/home/home.component';
 
-import {LightboxSliderComponent} from './components/common/lightbox-slider/lightbox-slider.component';
-import { SwiperModule } from 'swiper/angular';
-import {MarketplaceRootComponent} from './components/marketplace-root/marketplace-root.component';
+// Pages
+import { SetUpSchoolComponent } from './components/school/set-up-school/set-up-school.component';
+import { AccessSchoolComponent } from './components/school/access-school/access-school.component';
+import { StudentSignupComponent } from './components/school/student-signup/student-signup.component';
+import { SecurityComponent } from './components/school/security/security.component';
 
-import {AuthGuardGuard} from './route-guards/auth-guard/auth-guard.guard';
-import{CustomSnackbarComponent} from './components/common/custom-snackbar/custom-snackbar.component';
-
-
+// Guards
+import { AuthGuardGuard } from './route-guards/auth-guard/auth-guard.guard';
 import { CookieModule } from 'ngx-cookie';
+
+// Shard Module
+import { SharedModule } from './components/common/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MarketplaceRootComponent,
-    SetUpMarketplaceComponent,
+    SetUpSchoolComponent,
     HomeComponent,
-    AddPostComponent,
-    NavBarComponent,
-    YourSalesRentalComponent,
-    YourPurchasesComponent,
-    YourPostsComponent,
-    AuditLogComponent,
-    MarketplaceComponent,
-    ProductComponent,
-    ProductDetailsComponent,
-    AccessMarketPlaceComponent,
-    MarketplaceAvailabilityComponent,
-    YourAccountComponent,
-    ConnectPaymentMethodComponent,
-    ConfirmationPopupComponent,
+    AccessSchoolComponent,
+    StudentSignupComponent,
     SecurityComponent,
-    LoaderComponent,
-    AvailabilityStatusPopupComponent,
-    ProductAddEditStatusComponent,
     NumberInputDirective,
     LazyLoadImageDirective,
-    LightboxSliderComponent,
-    CustomSnackbarComponent,
-    StripeComponent,
-    BraintreeComponent,
-    PaypalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -90,11 +52,11 @@ import { CookieModule } from 'ngx-cookie';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SwiperModule
+    SharedModule
   ],
   providers: [
     AuthGuardGuard,
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent]
 })

@@ -32,7 +32,6 @@
     "ngx-cookie": "^5.0.2",
     "ngx-cookie-backend": "^5.0.2",
     "rxjs": "~6.5.5",
-    "swiper": "^6.5.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },

@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use "./assets/scss/theme";
 @use "./assets/scss/font";
-@import "~swiper/swiper-bundle";
 
 html {
   scroll-behavior: smooth;
@@ -164,12 +163,6 @@ button {
 }
 
 .section-title {
-  // padding-top: 150px;
-  // padding-bottom: 180px;
-  // &.inner-page {
-  //   padding-top: 150px;
-  //   padding-bottom: 140px;
-  // }
   padding: 20px 0;
 }
 
@@ -219,15 +212,10 @@ button {
 }
 
 .logo {
-  width: 150px;
-  // height: 50px;
+  display: block;
+  width: 80%;
+  max-width: 250px;
   margin: auto;
-  img {
-    width: 100%;
-  }
-  @media (min-width: 767px) {
-    width: 180px;
-  }
 }
 
 .custom-alert {
@@ -370,37 +358,13 @@ button {
   color: #737579;
 }
 
-.products-holder {
-  padding: 40px 0;
+.articles-grid {
   display: grid;
-  place-content: center;
-  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-
-  &.one-itm {
-    grid-template-columns: 303px;
+  @media (min-width: 539px) {
+    grid-template-columns: 1fr 1fr;
   }
-
-  &.two-itm {
-    grid-template-columns: 303px 303px;
+  @media (min-width: 1023px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
-}
-
-@media (max-width: 1023px) {
-  .products-holder,
-  .products-holder.one-itm,
-  .products-holder.two-itm {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 539px) {
-  .products-holder,
-  .products-holder.one-itm,
-  .products-holder.two-itm {
-    grid-template-columns: 1fr;
-  }
-}
-
-[data-braintree-id="number-field-group"] label {
-  width: 100% !important;
 }
