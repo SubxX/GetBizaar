@@ -16,6 +16,9 @@ import { MatSelectModule } from '@angular/material/select';
 // Shared Module
 import { SharedModule } from '../common/shared.module';
 
+// CKEditor
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 @NgModule({
   declarations: [
     SchoolRootComponent,
@@ -30,7 +33,8 @@ import { SharedModule } from '../common/shared.module';
     CommonModule,
     SchoolRootRoutingModule,
     MatSelectModule,
-    SharedModule
+    SharedModule,
+    CKEditorModule,
   ]
 })
 export class SchoolRootModule { }

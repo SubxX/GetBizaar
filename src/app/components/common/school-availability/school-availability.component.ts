@@ -5,11 +5,11 @@ import { AvailabilityStatusPopupComponent } from '../availability-status-popup/a
 import { marketplace } from '../../../api-routes/routes';
 
 @Component({
-  selector: 'app-marketplace-availability',
-  templateUrl: './marketplace-availability.component.html',
-  styleUrls: ['./marketplace-availability.component.scss']
+  selector: 'app-school-availability',
+  templateUrl: './school-availability.component.html',
+  styleUrls: ['./school-availability.component.scss']
 })
-export class MarketplaceAvailabilityComponent implements OnInit {
+export class SchoolAvailabilityComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}')]);
   available = '';
   constructor(private main: MainService) { }

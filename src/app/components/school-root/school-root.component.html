@@ -8,7 +8,7 @@
 
       <div class="section-title inner-page" *ngIf="url ==='/school/newspaper' && headerText" @state>
         <h1 class="text-white">{{headerText}}</h1>
-        <p class="text-base">Powered by Student News</p>
+        <p class="text-base mt-3">Powered by Student News</p>
       </div>
 
       <div class="section-title inner-page" *ngIf="url ==='/school/my-articles'" @state>
@@ -17,9 +17,11 @@
 
     </div>
 
-    <img *ngIf="user" #uppersec [src]="user.cover_photo ? user.cover_photo : 'assets/images/banner.jpg'"
+    <!-- <img *ngIf="user" #uppersec [src]="user.cover_photo ? user.cover_photo : 'assets/images/banner.jpg'"
       class="bg-img load-img" (load)="uppersec.classList.add('loaded')"
-      (error)="uppersec.setAttribute('src','assets/images/banner.jpg')" alt="marketplace-coverphoto" />
+      (error)="uppersec.setAttribute('src','assets/images/banner.jpg')" alt="marketplace-coverphoto" /> -->
+    <img #uppersec src="assets/images/banner.jpg" class="bg-img load-img" (load)="uppersec.classList.add('loaded')"
+      alt="marketplace-coverphoto" />
   </div>
 </ng-container>
 

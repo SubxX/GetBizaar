@@ -1,0 +1,17 @@
+<div class="article-card">
+
+  <div class="article-image">
+    <img src="assets/images/def_product.jpg" [alt]="articleData.title" />
+  </div>
+
+  <div class="article-content">
+    <p class="h5 mb-0 font-weight-600">{{articleData.title}}</p>
+    <span>{{articleData.desc}}</span>
+    <div class="article-publisher d-flex align-items-center flex-wrap">
+      <span class="by pr-2">By {{articleData.by}}</span>
+      <span class="time">{{articleData.added_date}}</span>
+    </div>
+  </div>
+
+  <ng-content></ng-content>
+</div>

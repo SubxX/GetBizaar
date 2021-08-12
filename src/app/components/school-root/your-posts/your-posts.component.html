@@ -1,9 +1,32 @@
-<div class="my-container">
+<div class="your-account-holder">
+  <div class="my-container">
 
-  <div class="articles-grid">
+    <div class="category">
+      <p class="category-title h2 font-weight-600">Your Articles</p>
+      <div class="articles-grid mt-4">
+        <app-article-card *ngFor="let article of articles" [article]="article">
+          <div class="article-actions">
+            <button class="delete-btn">Delete</button>
+            <button class="blue-btn">Edit</button>
+          </div>
+        </app-article-card>
+      </div>
+    </div>
+
+
+    <div class="category">
+      <p class="category-title h2 font-weight-600">Your Drafts</p>
+      <div class="articles-grid mt-4">
+        <app-article-card *ngFor="let article of articles.slice(0,2)" [article]="article">
+          <div class="article-actions">
+            <button class="delete-btn">Delete</button>
+            <button class="blue-btn">Edit</button>
+          </div>
+        </app-article-card>
+      </div>
+    </div>
 
   </div>
-
 </div>
 
 <!-- <div class="alert-no-products d-flex align-items-center" *ngIf="products && products.length==0">

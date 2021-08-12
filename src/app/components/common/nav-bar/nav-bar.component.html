@@ -2,7 +2,7 @@
   <div class="my-container">
 
     <div class="inner-nav text-white d-flex align-items-center justify-content-between" #innernavelm>
-      <a routerLink="/school" class="nav-logo" area-label="School Newspaper">
+      <a routerLink="/school/newspaper" class="nav-logo" area-label="School Newspaper">
         <!-- <img *ngIf="user" [src]="user.marketplace_logo ? user.marketplace_logo :'assets/images/logo.png'" width="130"
           height="40" class="load-img" #navImg (load)="navImg.classList.add('loaded')" alt="marketplace-logo"
           (error)="navImg.setAttribute('src','assets/images/logo.png')" /> -->
@@ -28,10 +28,6 @@
             <li routerLink="/school/my-profille" routerLinkActive="router-link-active" (click)="navOpened=false">
               My Profile
             </li>
-            <li (click)="navOpened=false">Sports</li>
-            <li (click)="navOpened=false">World News</li>
-            <li (click)="navOpened=false">Politics</li>
-            <li (click)="navOpened=false">Fantasy</li>
             <li (click)="logout()">Logout</li>
           </ul>
         </div>

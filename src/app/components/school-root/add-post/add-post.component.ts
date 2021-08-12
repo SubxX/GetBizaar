@@ -3,9 +3,8 @@ import { FormGroup, Validators, FormBuilder, AbstractControl, FormControl } from
 import { Subject } from 'rxjs';
 import { takeUntil, take } from 'rxjs/operators';
 import { MainService } from '../../../services/main.service';
-import { products } from '../../../api-routes/routes';
 import { Router } from '@angular/router';
-
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-add-post',
@@ -14,51 +13,56 @@ import { Router } from '@angular/router';
 })
 export class AddPostComponent implements OnInit, OnDestroy {
   articleForm: FormGroup;
-  articleId:String;
-  articleImage:any;
 
   destroy: Subject<any> = new Subject();
-  user: any;
   type = 'add';
-  preventRefresh = false;
-
-  @HostListener('window:beforeunload', ['$event'])
-  handeleScroll(e: any) {
-    if (this.preventRefresh) {
-      e.preventDefault();
-      return e.returnValue = 'Are you sure ?';
-    }
-  }
+  articleImageSrc: string;
+  public Editor = ClassicEditor;
+  categoryList = [
+    { title: 'Sports', id: 'xxx-txz' },
+    { title: 'Politics', id: 'xza-sta' },
+    { title: 'Opinion', id: 'zmj-ham' },
+    { title: 'Fiction', id: 'lao-pyu' },
+    { title: 'History', id: 'loa-klm' }
+  ]
+  // @HostListener('window:beforeunload', ['$event'])
+  // handeleScroll(e: any) {
+  //     e.preventDefault();
+  //     return e.returnValue = 'Are you sure ?';
+  // }
 
   constructor(private fb: FormBuilder, private main: MainService, private router: Router) {
     this.initForm();
-    
-    if (this.main.isBrowser) {
-      this.main.user.pipe(takeUntil(this.destroy))
-        .subscribe((data) => {
-          if (data) { this.user = data; console.log(data); }
-        });
-    }
   }
 
   ngOnInit(): void {
     this.main.updateTitle('Create Article');
-
-    if (this.main.isBrowser) {
-      const editable: any = JSON.parse(localStorage.getItem('productEditable'));
-      if (editable) {
-        localStorage.removeItem('productEditable');
-        this.type = 'edit';
-        this.preventRefresh = true;
-        const { name, email, location, price, quantity, rent_length, sale_or_rent, images, id } = editable;
-        this.articleId = id;
-      }
-    }
   }
 
-  initForm(): void {}
+  public onReady(editor) {
+    editor.ui.getEditableElement().parentElement.insertBefore(
+      editor.ui.view.toolbar.element,
+      editor.ui.getEditableElement()
+    );
+  }
+
+  initForm(): void {
+    this.articleForm = this.fb.group({
+      image: [null, Validators.required],
+      title: ['', Validators.required],
+      category: ['', Validators.required],
+      body: ['', [Validators.required]]
+    })
+  }
 
   submitForm(): void {
+    if (this.articleForm.invalid) {
+      for (let key in this.articleForm.controls) {
+        this.articleForm.controls[key].markAsDirty();
+      }
+      return;
+    }
+
     console.log(this.articleForm.value);
   }
 
@@ -67,11 +71,16 @@ export class AddPostComponent implements OnInit, OnDestroy {
       const file = e.target.files[0];
       const reader = new FileReader();
       reader.onload = (r: any) => {
-        this.articleImage = { src: r.target.result, file: file };
+        this.articleForm.patchValue({ image: file });
+        this.articleImageSrc = r.target.result;
         e.target.value = '';
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  selectCategory(cat): void {
+    this.articleForm.patchValue({ category: cat });
   }
 
   getError(control: AbstractControl) {

@@ -26,6 +26,8 @@
     "@angular/platform-browser-dynamic": "~10.0.11",
     "@angular/platform-server": "~10.0.11",
     "@angular/router": "~10.0.11",
+    "@ckeditor/ckeditor5-angular": "^2.0.2",
+    "@ckeditor/ckeditor5-build-classic": "^29.1.0",
     "@nguniversal/express-engine": "^10.0.2",
     "@stripe/stripe-js": "^1.13.2",
     "express": "^4.15.2",

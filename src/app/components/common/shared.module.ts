@@ -4,12 +4,14 @@ import { AvailabilityStatusPopupComponent } from './availability-status-popup/av
 import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
 import { CustomSnackbarComponent } from './custom-snackbar/custom-snackbar.component';
 import { LoaderComponent } from './loader/loader.component';
-import { MarketplaceAvailabilityComponent } from './marketplace-availability/marketplace-availability.component';
+import { SchoolAvailabilityComponent } from './school-availability/school-availability.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { ProductComponent } from './product/product.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ArticleCardComponent } from './article-card/article-card.component';
+
+// import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -17,24 +19,25 @@ import { RouterModule } from '@angular/router';
     ConfirmationPopupComponent,
     CustomSnackbarComponent,
     LoaderComponent,
-    MarketplaceAvailabilityComponent,
+    SchoolAvailabilityComponent,
     NavBarComponent,
-    ProductComponent
+    ArticleCardComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    // MatIconModule
   ],
   exports: [
     AvailabilityStatusPopupComponent,
     ConfirmationPopupComponent,
     CustomSnackbarComponent,
     LoaderComponent,
-    MarketplaceAvailabilityComponent,
+    SchoolAvailabilityComponent,
     NavBarComponent,
-    ProductComponent
+    ArticleCardComponent
   ]
 })
 export class SharedModule { }

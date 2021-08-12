@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MarketplaceAvailabilityComponent } from './marketplace-availability.component';
+import { SchoolAvailabilityComponent } from './school-availability.component';
 
 describe('MarketplaceAvailabilityComponent', () => {
-  let component: MarketplaceAvailabilityComponent;
-  let fixture: ComponentFixture<MarketplaceAvailabilityComponent>;
+  let component: SchoolAvailabilityComponent;
+  let fixture: ComponentFixture<SchoolAvailabilityComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MarketplaceAvailabilityComponent ]
+      declarations: [SchoolAvailabilityComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MarketplaceAvailabilityComponent);
+    fixture = TestBed.createComponent(SchoolAvailabilityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,11 +1,37 @@
-<div class="market-place-holder">
+<div class="newspaper-holder">
   <div class="my-container">
 
+    <div class="d-flex align-items-center flex-wrap">
+      <h2 class="font-weight-600 flex-grow">Recent News</h2>
+
+      <div class="sort-select-box">
+        <mat-select [(ngModel)]="sortBy.id">
+          <mat-option *ngFor="let cat of categoryList" [value]="cat.id">{{cat.title}}</mat-option>
+        </mat-select>
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em">
+          <path fill-rule="evenodd"
+            d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </div>
+
+    </div>
+
     <div class="category">
-      <p class="category-title">Sports</p>
+      <p class="category-title h2 font-weight-600">Sports</p>
 
-      <div class="articles-grid">
+      <div class="articles-grid mt-4">
+        <app-article-card *ngFor="let article of articles" [article]="article"></app-article-card>
+      </div>
 
+    </div>
+
+
+    <div class="category">
+      <p class="category-title h2 font-weight-600">Politics</p>
+
+      <div class="articles-grid mt-4">
+        <app-article-card *ngFor="let article of articles" [article]="article"></app-article-card>
       </div>
 
     </div>
@@ -18,10 +44,12 @@
 
 
 <!--no products message-->
-<!-- <div class="alert-no-products d-flex align-items-center">
-      <img src="assets/images/no-data.svg" width="160" height="110" alt="no-data" />
-      <div>
-        <h4>Sorry! no posts found</h4>
-        <p class="my-2">Please come again later or add your own product.</p>
-      </div>
-    </div> -->
+<!--
+<div class="alert-no-products d-flex align-items-center">
+  <img src="assets/images/no-data.svg" width="160" height="110" alt="no-data" />
+  <div>
+    <h4>Sorry! no posts found</h4>
+    <p class="my-2">Please come again later or add your own product.</p>
+  </div>
+</div>
+-->

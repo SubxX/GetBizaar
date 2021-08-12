@@ -4,9 +4,52 @@
       {{type==='add' ? 'Create a new Article' : 'Edit Article'}}
     </h2>
 
-    <form class="mt-5">
+    <form class="mt-5" [formGroup]="articleForm">
 
-      <p>Work in progress</p>
+      <div class="article-image" (click)="fileSelector.click()"
+        [class.no-img-err]="getError(articleForm.controls.image)">
+
+        <div class="select-image d-flex flex-column align-items-center justify-content-center" *ngIf="!articleImageSrc">
+          <img src="assets/placeholder-img.svg" width="110" height="58" alt="selectbox-image" />
+          <p class="mt-2">Add Header Image</p>
+        </div>
+
+        <div class="selected-image position-relative" *ngIf="articleImageSrc">
+          <img src="assets/images/banner.jpg" [src]="articleImageSrc" alt="article image" />
+          <button class="update-image-btn">
+            <svg width="25" height="25" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zm-2.207 2.207L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
+              </path>
+            </svg>
+          </button>
+        </div>
+
+        <input type="file" hidden #fileSelector (change)="fileSelected($event)" />
+      </div>
+
+      <div class="inner-io" [class.io-error]="getError(articleForm.controls.title)">
+        <label for="name">Title your Article:</label>
+        <input id="name" type="text" placeholder="Enter article title" formControlName="title">
+        <small class="err-text" *ngIf="getError(articleForm.controls.title)">Field is
+          required</small>
+      </div>
+
+      <div class="inner-io">
+        <label for="name">Select the category:</label>
+        <div class="category-selection">
+          <div tabindex="1" *ngFor="let c of categoryList" [class.selected]="articleForm.get('category').value === c.id"
+            (click)="selectCategory(c.id)">{{c.title}}
+          </div>
+        </div>
+        <small class="err-text" *ngIf="getError(articleForm.controls.category)">Field is required</small>
+      </div>
+
+      <div class="inner-io">
+        <ckeditor [editor]="Editor" data="<p>Hello, world!</p>" formControlName="body" (ready)="onReady($event)">
+        </ckeditor>
+        <small class="err-text" *ngIf="getError(articleForm.controls.body)">Field is required</small>
+      </div>
 
     </form>
 
@@ -31,4 +74,3 @@
 </div>
 <small class="err-text position-static" *ngIf="noPhotos!=undefined && noPhotos">Product images required</small>
 -->
-
