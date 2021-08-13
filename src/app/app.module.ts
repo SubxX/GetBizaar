@@ -52,7 +52,7 @@ import { SharedModule } from './components/common/shared.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     AuthGuardGuard,

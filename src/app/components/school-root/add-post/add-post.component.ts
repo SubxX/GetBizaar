@@ -36,6 +36,7 @@ export class AddPostComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.main.headerData.next({ title: '', sub: '', bg: 'assets/images/banner.jpg', nav: true, header: true });
     this.main.updateTitle('Create Article');
   }
 

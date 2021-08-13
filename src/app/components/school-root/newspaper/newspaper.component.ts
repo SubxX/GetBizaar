@@ -68,6 +68,7 @@ export class NewspaperComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.main.headerData.next({ title: 'Expansion Newspaper', sub: 'Powered by Student News', bg: 'assets/images/banner.jpg', nav: true, header: true });
     this.main.updateTitle('Newspaper');
     if (this.main.isBrowser && history.state.updated) this.openSnackBar();
   }

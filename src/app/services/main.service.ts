@@ -14,6 +14,15 @@ interface snackbarData {
   message: string
 }
 
+export interface HeaderData {
+  title: string;
+  sub: string;
+  bg: string,
+  nav: boolean,
+  header: boolean;
+  overlay?: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +32,7 @@ export class MainService {
   user: BehaviorSubject<any> = new BehaviorSubject<any>('');
   tempUser: BehaviorSubject<any> = new BehaviorSubject<any>('');
   snackbarState: Subject<snackbarData> = new Subject<snackbarData>();
+  headerData: Subject<HeaderData> = new Subject<HeaderData>();
 
   constructor(
     private http: HttpClient,

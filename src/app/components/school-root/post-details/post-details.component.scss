@@ -1,0 +1,21 @@
+@use "../../../../assets/scss/theme.scss";
+
+.blog-details-holder {
+  padding: 35px 0 40px 0;
+}
+
+.tags > div {
+  font-size: 14px;
+  margin: 5px;
+  padding: 10px 15px;
+  background: #fff;
+  display: inline-block;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.blog-details > * + * {
+  padding-top: 10px;
+}

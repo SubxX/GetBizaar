@@ -7,6 +7,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { NewspaperComponent } from './newspaper/newspaper.component';
 import { YourAccountComponent } from './your-account/your-account.component';
 import { YourPostsComponent } from './your-posts/your-posts.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'create-article', component: AddPostComponent },
       { path: 'my-articles', component: YourPostsComponent },
       { path: 'my-profille', component: YourAccountComponent },
+      { path: 'article/:id', component: PostDetailsComponent }
     ]
   }
 ];

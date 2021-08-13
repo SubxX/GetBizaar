@@ -1,26 +1,19 @@
-<app-nav-bar [userData]="user" *ngIf="navbarShow"></app-nav-bar>
+<app-nav-bar [userData]="user" *ngIf="headerData && headerData.nav"></app-nav-bar>
 
-<ng-container *ngIf="topSectionShown">
-  <div class="uppersection bg-main w-100 text-center">
-
+<ng-container *ngIf="headerData  && headerData.header">
+  <div class="uppersection bg-main w-100 text-center" [class.overlay]="headerData?.overlay">
 
     <div class="my-container d-flex justify-content-center align-items-center">
-
-      <div class="section-title inner-page" *ngIf="url ==='/school/newspaper' && headerText" @state>
-        <h1 class="text-white">{{headerText}}</h1>
-        <p class="text-base mt-3">Powered by Student News</p>
+      <div class="section-title inner-page">
+        <h1 class="text-white">{{headerData.title}}</h1>
+        <p class="text-base mt-3">{{headerData.sub}}</p>
       </div>
-
-      <div class="section-title inner-page" *ngIf="url ==='/school/my-articles'" @state>
-        <h1 class="text-white">My Articles</h1>
-      </div>
-
     </div>
 
     <!-- <img *ngIf="user" #uppersec [src]="user.cover_photo ? user.cover_photo : 'assets/images/banner.jpg'"
       class="bg-img load-img" (load)="uppersec.classList.add('loaded')"
       (error)="uppersec.setAttribute('src','assets/images/banner.jpg')" alt="marketplace-coverphoto" /> -->
-    <img #uppersec src="assets/images/banner.jpg" class="bg-img load-img" (load)="uppersec.classList.add('loaded')"
+    <img #uppersec [src]="headerData.bg" class="bg-img load-img" (load)="uppersec.classList.add('loaded')"
       alt="marketplace-coverphoto" />
   </div>
 </ng-container>

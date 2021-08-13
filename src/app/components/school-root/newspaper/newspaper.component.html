@@ -21,7 +21,9 @@
       <p class="category-title h2 font-weight-600">Sports</p>
 
       <div class="articles-grid mt-4">
-        <app-article-card *ngFor="let article of articles" [article]="article"></app-article-card>
+        <a class="d-block" routerLink="/school/article/id" *ngFor="let article of articles">
+          <app-article-card [article]="article"></app-article-card>
+        </a>
       </div>
 
     </div>
@@ -31,17 +33,16 @@
       <p class="category-title h2 font-weight-600">Politics</p>
 
       <div class="articles-grid mt-4">
-        <app-article-card *ngFor="let article of articles" [article]="article"></app-article-card>
+        <a class="d-block" routerLink="/school/article/id" *ngFor="let article of articles">
+          <app-article-card [article]="article"></app-article-card>
+        </a>
       </div>
 
     </div>
 
 
   </div>
-
 </div>
-
-
 
 <!--no products message-->
 <!--

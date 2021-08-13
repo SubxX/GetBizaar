@@ -13,11 +13,13 @@ import { YourPostsComponent } from './your-posts/your-posts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 
+
 // Shared Module
 import { SharedModule } from '../common/shared.module';
 
 // CKEditor
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AddPostComponent,
     NewspaperComponent,
     YourAccountComponent,
-    YourPostsComponent
+    YourPostsComponent,
+    PostDetailsComponent
   ],
   imports: [
     FormsModule,
@@ -34,7 +37,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     SchoolRootRoutingModule,
     MatSelectModule,
     SharedModule,
-    CKEditorModule,
+    CKEditorModule
   ]
 })
 export class SchoolRootModule { }

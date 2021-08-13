@@ -12,4 +12,5 @@ export class ArticleCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }

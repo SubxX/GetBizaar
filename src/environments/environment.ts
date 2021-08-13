@@ -4,11 +4,7 @@
 
 export const environment = {
   production: false,
-  // stripe:'pk_test_51Id8lkSFq7DFbHcFltt8fBF6TFsgMGGIdIANxs0WRaoXQG2GpeCmP2SH94qTqTaiDe6jt6Z2IcKQ8K9CmYL1v9IX00KaXbVXnZ',
-  // apiBase:'https://www.bit-pastel.com/mi/kooler/admin/api/',
-
-  stripe: 'pk_test_51J2cRWKTG38VflwMBRUvSFQYFsWZJxiMyXkiQzIDnQAvqCVbRVLNghU3oumW71XFNdQ9hLfQfjeuselCQSgd0nb200wcxyYjfj',
-  apiBase: 'https://www.getbizaar.com/admin/api/'
+  apiBase: 'https://www.bitpastel.io/kooler/admin/api/'
 };
 
 /*

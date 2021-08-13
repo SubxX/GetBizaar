@@ -36,6 +36,7 @@ export class YourAccountComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.main.updateTitle('My Profile');
+    this.main.headerData.next({ title: '', sub: '', bg: '', nav: false, header: false });
 
     if (this.main.isBrowser) {
 

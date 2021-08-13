@@ -115,6 +115,16 @@ button {
     min-height: 350px;
     padding-top: 40px;
   }
+  &.overlay::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 3, 3, 0.45);
+    z-index: -1;
+  }
 }
 
 .load-img {
@@ -341,6 +351,10 @@ button {
 .articles-grid {
   display: grid;
   grid-gap: 15px;
+  a {
+    text-decoration: none;
+    color: #212529;
+  }
   @media (min-width: 539px) {
     grid-template-columns: 1fr 1fr;
   }

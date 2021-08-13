@@ -46,6 +46,7 @@ export class YourPostsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.main.headerData.next({ title: 'My Articles', sub: '', bg: 'assets/images/banner.jpg', nav: true, header: true });
     this.main.updateTitle('My Articles');
   }
 
